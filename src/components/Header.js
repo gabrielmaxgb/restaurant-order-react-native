@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     justifyContent: "center",
 
-    marginTop: 60,
+    marginTop: 40,
     marginHorizontal: 25,
   },
   lightHeader: {

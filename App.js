@@ -12,7 +12,7 @@ const categoryOptions = [
   },
   {
     categoryImagePath: require("./src/assets/images/cake.png"),
-    categoryLabel: "Cake",
+    categoryLabel: "Dessert",
   },
   {
     categoryImagePath: require("./src/assets/images/pasta.png"),
@@ -48,9 +48,9 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
+      {/* <StatusBar style="auto" /> */}
       <Header />
-      <Search />
+      <Search setTerm={setTerm} />
       <View>
         <FlatList 
           horizontal={true}
@@ -66,14 +66,5 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    // display: "flex",
-    // alignItems: "center",
-    // justifyContent: "center",
-
-    // minHeight: "100%",
-    // flex: 1,
-    // backgroundColor: 'pink',
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
 });
