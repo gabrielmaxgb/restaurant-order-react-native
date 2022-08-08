@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import CategoryItem from './src/components/CategoryItem';
 import Header from './src/components/Header';
 import Search from './src/components/Search';
@@ -23,7 +23,7 @@ const categoryOptions = [
   },
   {
     categoryImagePath: require("./src/assets/images/smoothies.png"),
-    categoryLabel: "Smoothies",
+    categoryLabel: "Drinks",
   },
   {
     categoryImagePath: require("./src/assets/images/steak.png"),
@@ -33,13 +33,13 @@ const categoryOptions = [
 
 export default function App() {
 
-  const categorieItems = () => {
-    categoryOptions.map(category => {
-      <CategoryItem 
-        categoryImagePath={category.categoryImagePath} 
-        categoryLabel={category.categoryLabel}
-      />
-    })  
+  const renderItem = ({item, index}) => {
+    return <CategoryItem
+      categoryLabel={item.categoryLabel} 
+      categoryImagePath={item.categoryImagePath}
+      index={index}
+      categoryOptionsLength={categoryOptions.length}
+    />
   };
 
   return (
@@ -47,8 +47,15 @@ export default function App() {
       <StatusBar style="auto" />
       <Header />
       <Search />
-      {/* <CategoryItem categoryLabel={"Burguer"} /> */}
-      {categorieItems()}
+      <View>
+        <FlatList 
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(category) => category.categoryLabel}
+          data={categoryOptions} 
+          renderItem={renderItem}
+        />
+      </View>
     </View>
   );
 }

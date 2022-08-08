@@ -6,10 +6,21 @@ export default function CategoryItem(props) {
   const {
     categoryLabel,
     categoryImagePath,
+    index,
+    categoryOptionsLength,
   } = props;
 
+  console.log(categoryOptionsLength)
+
   return (
-    <View style={[styles.container, elevation]}>
+    <View 
+      style={[
+        styles.container, 
+        elevation, 
+        index === 0 ? { marginLeft: 12 } : { marginLeft: 10 }, 
+        index === categoryOptionsLength - 1 ? { marginRight: 12 } : { marginRight: 10 } 
+      ]}
+    >
       <View style={styles.imageContainer}>
         <Image 
           source={categoryImagePath} 
@@ -29,7 +40,6 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 10,
     marginVertical: 10,
-    marginHorizontal: 12,
     backgroundColor: "white",
     padding: 4,
 
@@ -37,9 +47,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    // borderRadius: 8,
-    // padding: 25,
-    // backgroundColor: "white",
     width: 30,
     height: 30,
   },
