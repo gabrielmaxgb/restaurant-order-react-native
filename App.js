@@ -1,4 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import CategoryItem from './src/components/CategoryItem';
 import Header from './src/components/Header';
@@ -32,6 +33,7 @@ const categoryOptions = [
 ]
 
 export default function App() {
+  const [term, setTerm] = useState("Pizza")
 
   const renderItem = ({item, index}) => {
     return <CategoryItem
@@ -39,6 +41,8 @@ export default function App() {
       categoryImagePath={item.categoryImagePath}
       index={index}
       categoryOptionsLength={categoryOptions.length}
+      active={item.categoryLabel === term}
+      handlePress={() => setTerm(item.categoryLabel)}
     />
   };
 
