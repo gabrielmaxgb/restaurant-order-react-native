@@ -12,8 +12,6 @@ export default function CategoryItem(props) {
     handlePress
   } = props;
 
-  console.log(categoryOptionsLength)
-
   return (
     <TouchableWithoutFeedback onPress={() => handlePress()}>
       <View 
