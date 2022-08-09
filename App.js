@@ -1,9 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
-import CategoryItem from './src/components/CategoryItem';
+import { StyleSheet, View } from 'react-native';
 import Header from './src/components/Header';
 import Search from './src/components/Search';
+import Categories from './src/components/Categories';
+import Restaurants from './src/components/Restaurants';
 
 const categoryOptions = [
   {
@@ -35,31 +36,19 @@ const categoryOptions = [
 export default function App() {
   const [term, setTerm] = useState("Pizza")
 
-  const renderItem = ({item, index}) => {
-    return <CategoryItem
-      categoryLabel={item.categoryLabel} 
-      categoryImagePath={item.categoryImagePath}
-      index={index}
-      categoryOptionsLength={categoryOptions.length}
-      active={item.categoryLabel === term}
-      handlePress={() => setTerm(item.categoryLabel)}
-    />
-  };
-
   return (
     <View style={styles.container}>
       {/* <StatusBar style="auto" /> */}
       <Header />
       <Search setTerm={setTerm} />
-      <View>
-        <FlatList 
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-          keyExtractor={(category) => category.categoryLabel}
-          data={categoryOptions} 
-          renderItem={renderItem}
+      {/* <View> */}
+        <Categories 
+          categoryOptions={categoryOptions}
+          term={term}
+          setTerm={setTerm}
         />
-      </View>
+      {/* </View> */}
+      <Restaurants />
     </View>
   );
 }
