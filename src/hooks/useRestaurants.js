@@ -12,12 +12,13 @@ export default () => {
   const searchRestaurants = async (term) => {
     setResults({
       loading: true,
-      ...results,
+      data: null,
+      error: null,
     })
     try {
       const response = await yelp.get('/search', {
         params: {
-          limit: 5,
+          limit: 15,
           term,
           location: "Brasília",
         }

@@ -34,7 +34,7 @@ const categoryOptions = [
 ]
 
 export default function App() {
-  const [term, setTerm] = useState("Pizza")
+  const [term, setTerm] = useState("Burguer");
 
   return (
     <View style={styles.container}>
@@ -48,7 +48,7 @@ export default function App() {
           setTerm={setTerm}
         />
       {/* </View> */}
-      <Restaurants />
+      <Restaurants term={term} />
     </View>
   );
 }

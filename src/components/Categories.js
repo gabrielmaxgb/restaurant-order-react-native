@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList } from 'react-native'
+import { FlatList, View } from 'react-native'
 import CategoryItem from './CategoryItem';
 
 export default function Categories(props) {
@@ -21,12 +21,14 @@ export default function Categories(props) {
   };
 
   return (
-    <FlatList 
-      horizontal={true}
-      showsHorizontalScrollIndicator={false}
-      keyExtractor={(category) => category.categoryLabel}
-      data={categoryOptions} 
-      renderItem={renderItem}
-    />
+    <View>
+      <FlatList 
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={(category) => category.categoryLabel}
+        data={categoryOptions} 
+        renderItem={renderItem}
+      />
+    </View>
   )
 }
