@@ -1,7 +1,22 @@
 import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
+import yelp from "../api/yelp";
 
 const Restaurants = () => {
+
+  const searchRestaurants = async () => {
+    const response = await yelp.get('/search', {
+      params: {
+        limit: 5,
+        term: "Dessert",
+        location: "Brasília",
+      }
+    });
+    console.log(response.data);
+  };
+
+  searchRestaurants();
+
   return (
     <View style={styles.container}>
       <Text style={styles.header}>
